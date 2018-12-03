@@ -1,0 +1,34 @@
+The purpose of programming is to express ideas in code.
+The purpose of a programming language is twofold:
+    - provide a vehicle for development and execution
+    - provide a set of concepts for problem solving
+
+C++ provides
+    - direct mappings of built-in operations and types to hardware for efficiency
+    - abstraction mechanisms for user-defined type creation with same support and performance as built-in types
+
+EFFICIENCY and ELEGANCE
+
+TIL: C++ was originally from the convergence of Simula and C.
+
+C++ most directly supports 3 programming styles:
+    - Procedural: processing and design of suitable data structures
+    - Data abstraction: hiding implementation details
+    - Object-oriented: class hierarchies, runtime polymorphism
+    - Generic: algorithms that accept N types, template programming
+
+
+lvalue is reliable, something located at a trustworthy location
+rvalue is more transient, may or may not change or be there when you want it again
+
+The difference between C and C++ is primarily the degree of emphasis on types and structure.
+
+C++ is a language that you can grow with.
+
+How to write good code?
+    - Know what you want to express
+    - Practice, imitate good code
+
+
+
+
