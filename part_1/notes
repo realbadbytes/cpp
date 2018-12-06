@@ -1,0 +1,14 @@
+C++ is statically typed. Compiler can only determine set of operations applicable to an entity by its type.
+
+ISO C++ standard defines two things: core language features, and standard library components.
+
+declaration: statement that introduces a name into the program. specifies a type for the named entity:
+    type: defines the set of possible values and a set of operations for the entity.
+    object: some memory that holds a value of a type.
+    value: set of bits interpreted to a type.
+    variable: named object
+
+C++ performs all meaningful conversions between basic types, but here be dragons for those unaware.
+
+utilize {} during initialization to avoid conversion issues.
+
