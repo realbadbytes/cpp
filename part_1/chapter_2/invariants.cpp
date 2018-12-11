@@ -1,6 +1,9 @@
 /* something assumed to be true about a class is an invariant. 
  * "elem points to an array of sz doubles" 
  * constructors must establish invariants
+ * this is very important because:
+ * - makes us understand exactly what we want
+ * - forces us to be specific
  */
 
 Vector::Vector(int s)
