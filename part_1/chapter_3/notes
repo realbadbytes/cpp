@@ -1,0 +1,24 @@
+3 types of classes will be discussed:
+
+Concrete classes:
+    behave like built-in types
+    can be on the stack, in static memory, in other objects
+    can hold direct references to them, ie theyre quite tangible
+    initialization on creation
+    copyable
+    functions defined in classes are inlined by default when possible
+    destructor is automatically called when object goes out of scope 
+
+Abstract classes
+    user sees zero implementation details, only uses the interface
+    all objects go on free store bc we cant know the size ahead of time
+    virtual and pure virtual functions are placeholders for implementation/subclasses
+    provides an interface for all subclasses to override. helps keep consistency across classes
+    compiler converts name of virtual function into an index into a table of function pointers.
+    the vtable pointer is in memory before the object instance. its essentially object metadata
+    utilize unique_ptr since it will deallocate the owned object once it goes out of scope.
+    unique_ptr can only be owned by one thing at a time, copying is not allowed. use std:move()
+    variadic templates can accept an arbitrary number of arguments of arbitrary types
+    
+
+Classes in hierarchies
