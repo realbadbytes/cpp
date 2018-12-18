@@ -10,7 +10,7 @@ template<typename T> class Less_than
         }
 
         /* Define callable () */
-        bool operator{}(const T& x) const {
+        bool operator()(const T& x) const {
             return x < val;
         }
 }
