@@ -2,6 +2,10 @@
  * C++ provides error handling mainly through the Type system */
 
 #include "Vector.h"
+#include <iostream>
+#include <stdexcept>
+
+using namespace std;
 
 
 Vector::Vector(int s)
@@ -27,4 +31,12 @@ double& Vector::operator[](int i)
 int Vector::size() const
 {
     return sz;
+}
+
+int main()
+{
+    Vector v(1000);
+    double a = v[1]; // ok
+    double b = v[2000]; //oob
+    return 0;
 }

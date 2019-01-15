@@ -1,0 +1,11 @@
+Containers and Algorithms
+
+Standard library provide standard types
+standard library takes up 2/3rd of the ISO C++ standard
+Standard library provides facilities for runtime support like allocations, the C std lib,
+strings and io streams, containers, algorithms, numerical computation, regex matching, concurrency,
+template programming, smart pointers.
+
+In short, stdlib contains common fundamental data structures along with algorithms used on them.
+
+

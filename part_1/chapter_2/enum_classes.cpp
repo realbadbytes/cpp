@@ -1,3 +1,5 @@
+// g++ -std=c++11 -o enum_classes enum_classes.cpp
+
 #include <iostream>
 using namespace std;
 
