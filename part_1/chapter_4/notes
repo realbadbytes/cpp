@@ -14,3 +14,8 @@ the [] operator to change a string.
 io of built-in types is straight forward. cout and cin from the iostream library can intake all built-in types.
 iostream also allows developers to define IO for their own types.
 
+container is a class with the main purpose of holding objects.
+Entry class shown earlier is a container.
+Vector is the most useful standard library container. Its a sequence of elements of a given type, 
+stored contiguously in memory. This gives it O(1) access time for any element since you hold
+a starting pointer plus an index. Single access with no list walking.
