@@ -1,3 +1,5 @@
+/* clang++ -std=c++11 -o entry entry.cpp */
+
 #include <iostream>
 #include <string>
 
