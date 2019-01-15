@@ -8,4 +8,9 @@ template programming, smart pointers.
 
 In short, stdlib contains common fundamental data structures along with algorithms used on them.
 
+strings. C++ strings are mutable (as opposed to ones you might have encountered in python). You can utilize
+the [] operator to change a string.
+
+io of built-in types is straight forward. cout and cin from the iostream library can intake all built-in types.
+iostream also allows developers to define IO for their own types.
 
