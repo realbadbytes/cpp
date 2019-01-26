@@ -6,17 +6,14 @@
 using namespace std;
 
 
-void print_names(const vector<string>& names)
-{
-    for (int i = 0; i < names.size(); ++i) {
-        cout << names[i] << endl;
-    }
-}
-
-
 int main()
 {
-    vector<string> names = {"bad", "bytes", "yee"};
-    print_names(names);
+    
+    string a(100000, 'A');
+    string b(100000, 'B');
+    string c(100000, 'C');
+
+    vector<string> names = {a, b, c};
+
     return 0;
 }

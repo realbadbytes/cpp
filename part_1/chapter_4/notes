@@ -19,3 +19,16 @@ Entry class shown earlier is a container.
 Vector is the most useful standard library container. Its a sequence of elements of a given type, 
 stored contiguously in memory. This gives it O(1) access time for any element since you hold
 a starting pointer plus an index. Single access with no list walking.
+
+iterators are provided by every stdlib container. the expose begin() and end()
+begin points to the first element, end points to one-past-the-end. Why?
+This can be a source of bugs. Container iterators also can utilize unary operators like ++. 
+For example in a for loop, iterator++ would give you the next element in the container.
+While looping through a container with an iterator, *iterator is the current container element.
+If this dereference returns an object with members, then iterator->member is valid. This is the same
+as using (*iterator)->member.
+
+a std list is a doubly linked list. 
+
+map is a search tree data structure. series of name:value pairs implemented as a balanced binary tree. this is also known as a dictionary, optimized for lookup, O(logn). O(logn) is faster than O(n), this fast lookup is possible because searching a balanced binary tree, the search space is halved each time a node is traversed. THis continuous halving is essentially the reverse of exponential growth, which is the logarithm.
+the unordered map is a hashed lookup version of the map. this makes the lookup even faster due to hash tables. a hash table maps keys to values using a hashing function, allowing the search space to be narrowed down very quickly for a search when compared to a binary search. see graph

@@ -1,4 +1,4 @@
-/* clang++ -std=c++11 -o string string.cpp */
+/* g++ -std=c++11 -o string string.cpp */
 
 #include <stdio.h>
 #include <iostream>
@@ -19,5 +19,5 @@ int main()
     printf("%s\n", addr.c_str());
 
     /* cout ostream knows how to handle C++ string type */
-    cout << addr << endl;
+    cout << addr[2] << endl;
 }
