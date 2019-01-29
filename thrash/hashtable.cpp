@@ -57,6 +57,28 @@ int hash_func(TableEntry *t)
 }
 
 
+TableEntry* alloc_tableentry(string s, int data)
+{
+
+    TableEntry *ptr = (struct TableEntry *) malloc(sizeof(struct TableEntry));
+
+    if (ptr == nullptr) {
+
+        cout << "malloc() has failed. Exiting\n" << endl;
+
+    }
+
+    ptr->next = nullptr;
+
+    ptr->s = s;
+
+    ptr->data = data;
+
+    return ptr;
+
+}
+
+
 void print_hashtable(TableEntry **hashtable, int slot_bitmap[])
 {
 
@@ -96,28 +118,6 @@ void print_hashtable(TableEntry **hashtable, int slot_bitmap[])
     }
 
     free(tmp);
-
-}
-
-
-TableEntry* alloc_tableentry(string s, int data)
-{
-
-    TableEntry *ptr = (struct TableEntry *) malloc(sizeof(struct TableEntry));
-
-    if (ptr == nullptr) {
-
-        cout << "malloc() has failed. Exiting\n" << endl;
-
-    }
-
-    ptr->next = nullptr;
-
-    ptr->s = s;
-
-    ptr->data = data;
-
-    return ptr;
 
 }
 
