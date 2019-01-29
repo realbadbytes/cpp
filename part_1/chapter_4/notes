@@ -32,3 +32,5 @@ a std list is a doubly linked list.
 
 map is a search tree data structure. series of name:value pairs implemented as a balanced binary tree. this is also known as a dictionary, optimized for lookup, O(logn). O(logn) is faster than O(n), this fast lookup is possible because searching a balanced binary tree, the search space is halved each time a node is traversed. THis continuous halving is essentially the reverse of exponential growth, which is the logarithm.
 the unordered map is a hashed lookup version of the map. this makes the lookup even faster due to hash tables. a hash table maps keys to values using a hashing function, allowing the search space to be narrowed down very quickly for a search when compared to a binary search. see graph
+
+There are many
