@@ -25,10 +25,10 @@ struct TableEntry {
  * A second solution is closed addressing where each spot in the hash table can 
  * hold a linked list of items that matched that hash code.
  */
-int hash_func(TableEntry t)
+int hash_func(TableEntry *t)
 {
     int hash_value = 0;
-    string s = t.s;
+    string s = t->s;
 
     for (int c : s) {
         /* Using int gets the ascii code */
@@ -37,18 +37,36 @@ int hash_func(TableEntry t)
     /* Divide by number of elements in the hash table, save remainder as hash code
      * aka modulus 
      */
-    cout << "hash of \"" << s << "\" is " << hash_value % 10 << endl;
-    return hash_value % 10;
+    cout << "hash of \"" << s << "\" is " << hash_value % 5 << endl;
+    return hash_value % 5;
 }
 
 
-void print_hashtable(TableEntry *hashtable)
+void print_hashtable(TableEntry **hashtable, int slot_bitmap[])
 {
-    /* Number of possible hashes is 10 */
+    TableEntry *tmp = (struct TableEntry *) malloc(sizeof(struct TableEntry));
+    tmp->next = nullptr;
+    tmp->s = "tmp";
+    tmp->data = 0;
+
+    /* Number of possible hashes is 5. */
     for (int i = 0; i < 5; i++) {
-        cout << hashtable[i]->data << endl;
-        while (hashtable[i]->next != nullptr) {
-            cout << hashtable[i]->data << endl;
+        cout << "Slot " << i << endl;
+        /* If there is nothing in the hash table at this index */
+        if (slot_bitmap[i] == 0) {
+            continue;
+        }
+
+        tmp = hashtable[i];
+
+        while (1) {
+
+            cout << tmp->data << endl;
+            tmp = tmp->next;
+            /* End of the linked list. */
+            if (tmp == nullptr) {
+                break;
+            }
         }
     }
 }
@@ -77,19 +95,19 @@ int main(int argc, char *argv[])
 
     TableEntry *d = (struct TableEntry *) malloc(sizeof(struct TableEntry));
     d->next = nullptr;
-    d->s = "goodcode";
+    d->s = "goodcodrrrrre";
     d->data = 101011;
 
 
     TableEntry *e = (struct TableEntry *) malloc(sizeof(struct TableEntry));
     e->next = nullptr;
-    e->s = "d3adc0de";
+    e->s = "d3adc0dpoaspeopoe";
     e->data = 99999;
 
 
     TableEntry *tmp = (struct TableEntry *) malloc(sizeof(struct TableEntry));
     tmp->next = nullptr;
-    tmp->s = "";
+    tmp->s = "tmp";
     tmp->data = 0;
 
 
@@ -97,27 +115,31 @@ int main(int argc, char *argv[])
 
     TableEntry *hashtable[5] = {0};
 
+    int slot_bitmap[5] = {0};
+
     int hash_value = 0;
 
     for (int i = 0; i < 5; i++) {
 
         hash_value = hash_func(basictable[i]);
 
-        tmp = hashtable[hash_value];
-
         /* The slot is open */
-        if (tmp->data == 0) {
+        if (slot_bitmap[hash_value] == 0) {
             cout << "Found open slot at " << hash_value << endl;
 
             hashtable[hash_value] = basictable[i];
 
             cout << "Inserted \"" << hashtable[hash_value]->s << "\" at " << hash_value << endl;
 
+            slot_bitmap[hash_value] = 1;
+
         }
+
 
         /* Collision */
         else {
             cout << "Collision at slot " << hash_value << endl;
+            tmp = hashtable[hash_value];
 
             /* Iterate through linked list at hash */
             while (tmp->next != nullptr) {
@@ -136,7 +158,7 @@ int main(int argc, char *argv[])
     }
 
     /* Check if it worked */
-    print_hashtable(hashtable);
+    print_hashtable(hashtable, slot_bitmap);
 
 }
 
