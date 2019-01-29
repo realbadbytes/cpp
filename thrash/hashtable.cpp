@@ -71,6 +71,7 @@ void print_hashtable(TableEntry **hashtable, int slot_bitmap[])
             }
         }
     }
+    free(tmp);
 }
 
 
@@ -161,6 +162,12 @@ int main(int argc, char *argv[])
 
     /* Check if it worked */
     print_hashtable(hashtable, slot_bitmap);
+    free(a);
+    free(b);
+    free(c);
+    free(d);
+    free(e);
+    free(tmp);
 
 }
 
