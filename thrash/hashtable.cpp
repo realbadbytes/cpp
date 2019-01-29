@@ -1,3 +1,5 @@
+// g++ -std=c++11 -ggdb -o hashtable hashtable.cpp
+
 #include <string>
 #include <iostream>
 
