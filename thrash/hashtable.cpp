@@ -126,15 +126,10 @@ int main(int argc, char *argv[])
 {
 
     TableEntry *a = alloc_tableentry("algorithmicefficiency", 11111);
-
     TableEntry *b = alloc_tableentry("badcode", 22222);
-
     TableEntry *c = alloc_tableentry("g00dc00de", 33333);
-
     TableEntry *d = alloc_tableentry("hexdumps", 44444);
-
     TableEntry *e = alloc_tableentry("d3adc0de", 55555);
-
     TableEntry *tmp = alloc_tableentry(" ", 0);
 
     TableEntry *basictable[5] = {a, b, c, d, e};
@@ -191,15 +186,10 @@ int main(int argc, char *argv[])
     print_hashtable(hashtable, slot_bitmap);
 
     free(a);
-
     free(b);
-
     free(c);
-
     free(d);
-
     free(e);
-
     free(tmp);
 
 }
