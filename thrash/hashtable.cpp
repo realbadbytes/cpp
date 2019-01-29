@@ -43,7 +43,6 @@ int hash_func(TableEntry *t)
     for (int c : s) {
 
         /* Using int gets the ascii code */
-
         hash_value += c;
 
     }
@@ -155,11 +154,8 @@ int main(int argc, char *argv[])
         if (slot_bitmap[hash_value] == 0) {
 
             cout << "Found open slot at " << hash_value << endl;
-
             hashtable[hash_value] = basictable[i];
-
             cout << "Inserted \"" << hashtable[hash_value]->s << "\" at " << hash_value << endl;
-
             slot_bitmap[hash_value] = 1;
 
         }
@@ -169,7 +165,6 @@ int main(int argc, char *argv[])
         else {
 
             cout << "Collision at slot " << hash_value << endl;
-
             tmp = hashtable[hash_value];
 
             /* Iterate through linked list at hash */
@@ -177,7 +172,6 @@ int main(int argc, char *argv[])
             while (tmp->next != nullptr) {
 
                 cout << "Traversing chained TableEntries" << endl;
-
                 tmp = tmp->next;
 
             }
