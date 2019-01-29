@@ -46,10 +46,7 @@ int hash_func(TableEntry *t)
 
 void print_hashtable(TableEntry **hashtable, int slot_bitmap[])
 {
-    TableEntry *tmp = (struct TableEntry *) malloc(sizeof(struct TableEntry));
-    tmp->next = nullptr;
-    tmp->s = "tmp";
-    tmp->data = 0;
+    TableEntry *tmp = alloc_tableentry(" ", 0);
 
     /* Number of possible hashes is 5. */
     for (int i = 0; i < 5; i++) {
