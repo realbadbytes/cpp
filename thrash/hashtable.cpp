@@ -75,44 +75,29 @@ void print_hashtable(TableEntry **hashtable, int slot_bitmap[])
 }
 
 
+TableEntry* alloc_tableentry(string s, int data)
+{
+    TableEntry *ptr = (struct TableEntry *) malloc(sizeof(struct TableEntry));
+    if (ptr == nullptr) {
+        cout << "malloc() has failed. Exiting\n" << endl;
+    }
+    ptr->next = nullptr;
+    ptr->s = s;
+    ptr->data = data;
+    return ptr;
+}
+
+
 int main(int argc, char *argv[])
 {
 
-    TableEntry *a = (struct TableEntry *) malloc(sizeof(struct TableEntry));
-    a->next = nullptr;
-    a->s = "bad";
-    a->data = 111111;
+    TableEntry *a = alloc_tableentry("algorithmicefficiency", 11111);
+    TableEntry *b = alloc_tableentry("badcode", 22222);
+    TableEntry *c = alloc_tableentry("g00dc00de", 33333);
+    TableEntry *d = alloc_tableentry("hexdumps", 44444);
+    TableEntry *e = alloc_tableentry("d3adc0de", 55555);
 
-
-    TableEntry *b = (struct TableEntry *) malloc(sizeof(struct TableEntry));
-    b->next = nullptr;
-    b->s = "algorithmicefficiency";
-    b->data = 77777;
-
-
-    TableEntry *c = (struct TableEntry *) malloc(sizeof(struct TableEntry));
-    c->next = nullptr;
-    c->s = "badcode";
-    c->data = 22222;
-
-
-    TableEntry *d = (struct TableEntry *) malloc(sizeof(struct TableEntry));
-    d->next = nullptr;
-    d->s = "goodcodrrrrre";
-    d->data = 101011;
-
-
-    TableEntry *e = (struct TableEntry *) malloc(sizeof(struct TableEntry));
-    e->next = nullptr;
-    e->s = "d3adc0dpoaspeopoe";
-    e->data = 99999;
-
-
-    TableEntry *tmp = (struct TableEntry *) malloc(sizeof(struct TableEntry));
-    tmp->next = nullptr;
-    tmp->s = "tmp";
-    tmp->data = 0;
-
+    TableEntry *tmp = alloc_tableentry(" ", 0);
 
     TableEntry *basictable[5] = {a, b, c, d, e};
 
