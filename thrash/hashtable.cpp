@@ -11,9 +11,7 @@ using namespace std;
 struct TableEntry {
 
     TableEntry* next;
-
     string s;
-
     int data;
 
 };
@@ -50,7 +48,6 @@ int hash_func(TableEntry *t)
     /* Divide by number of elements in the hash table, save remainder as hash code
      * aka modulus 
      */
-
     cout << "hash of \"" << s << "\" is " << hash_value % 5 << endl;
 
     return hash_value % 5;
@@ -69,9 +66,7 @@ TableEntry* alloc_tableentry(string s, int data)
     }
 
     ptr->next = nullptr;
-
     ptr->s = s;
-
     ptr->data = data;
 
     return ptr;
@@ -85,13 +80,11 @@ void print_hashtable(TableEntry **hashtable, int slot_bitmap[])
     TableEntry *tmp = alloc_tableentry(" ", 0);
 
     /* Number of possible hashes is 5. */
-
     for (int i = 0; i < 5; i++) {
 
         cout << "Slot " << i << endl;
 
         /* If there is nothing in the hash table at this index */
-
         if (slot_bitmap[i] == 0) {
 
             continue;
@@ -103,7 +96,6 @@ void print_hashtable(TableEntry **hashtable, int slot_bitmap[])
         while (1) {
 
             cout << tmp->data << endl;
-
             tmp = tmp->next;
 
             /* End of the linked list. */
@@ -112,30 +104,33 @@ void print_hashtable(TableEntry **hashtable, int slot_bitmap[])
                 break;
 
             }
-
         }
-
     }
 
     free(tmp);
-
 }
 
 
 int main(int argc, char *argv[])
 {
 
+    /* Actual entries */
     TableEntry *a = alloc_tableentry("algorithmicefficiency", 11111);
     TableEntry *b = alloc_tableentry("badcode", 22222);
     TableEntry *c = alloc_tableentry("g00dc00de", 33333);
     TableEntry *d = alloc_tableentry("hexdumps", 44444);
     TableEntry *e = alloc_tableentry("d3adc0de", 55555);
+
+    /* Placeholder while doing chaining */
     TableEntry *tmp = alloc_tableentry(" ", 0);
 
+    /* Original entry array */
     TableEntry *basictable[5] = {a, b, c, d, e};
 
+    /* Hash table to insert into */
     TableEntry *hashtable[5] = {0};
 
+    /* Tracking of which slots have valid entries */
     int slot_bitmap[5] = {0};
 
     int hash_value = 0;
@@ -145,7 +140,6 @@ int main(int argc, char *argv[])
         hash_value = hash_func(basictable[i]);
 
         /* The slot is open */
-
         if (slot_bitmap[hash_value] == 0) {
 
             cout << "Found open slot at " << hash_value << endl;
@@ -156,7 +150,6 @@ int main(int argc, char *argv[])
         }
 
         /* Collision */
-
         else {
 
             cout << "Collision at slot " << hash_value << endl;
@@ -172,9 +165,9 @@ int main(int argc, char *argv[])
             }
 
         /* Link new TableEntry to tail */
-
         cout << "Linking up TableEntry to tail at slot " << hash_value << endl;
 
+        /* Follow next pointer */
         tmp->next = basictable[i];
 
         }
