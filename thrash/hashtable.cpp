@@ -8,6 +8,11 @@ using namespace std;
  * aka hash, or "map" the data to the index
  * This hash function will get the ascii code of each char and add them together
  * to compute the hash.
+ *
+ * Inserting elements into a hash table based on this method will eventually 
+ * yield collisions, i.e items with the same hash value. One solution for this
+ * is linear probing/open addressing, where if an item cant be inserted at its
+ * proper hashed location, it moves up the hash table into the first available spot.
  */
 int hash_func(string s)
 {
