@@ -1,0 +1,35 @@
+Concurrency and Utilities Tour
+
+The standard library aims to serve the intersection of needs rather than the union. The result of this decision is a generally useful
+set of well-designed tools.
+C++ resource management covers the allocation and deallocation of things that are acquired at runtime.
+In the standard library, resources follow "Resource Acquisition Is Initialization" RAII. Defined so eloquently
+on cppreference.com, "binds the lifecycle of a resource that must be acquired before use to the lifetime of the object."
+This is absolutely fundamental in the design of C++. It guarantees that if you have access to an object, the necessary
+resources to use that object are also ready to be used. Additionally, when the object is released (either manually
+or by some other mechanism, like going out of scope), all associated resources are released as well. Objects, in this sense,
+come in an "all or nothing" package. 
+
+unique_ptr and shared_ptr - smart pointers that help manage objects on the heap. When the unique/shared pointer is forgotten about,
+C++ covers our butts and frees it before leaving the function. This is essentially programming training wheels. unique_ptr can also
+be returned from functions since its a handle to an individual object. unique_ptrs are moved, they are atomic. This differs from 
+shared_ptr. Shared_ptrs are copied. The object pointed to by multiple shared_ptr's will only be deallocated once the reference
+count reaches zero. example.
+smart pointers are a form of desctructor based garbage collection and relieve the programmer from having to worry too much 
+about memory leaks.
+
+Concurrency is the execution of several tasks simultaneously. This is a bit of a fallacy on uniprocessor systems; instructions are
+interleaved. On a multiprocessor system, concurrency is indeed the simutaneous execution of instructions. If those instructions
+operate on the same data, here be dragons. The C++ standard library directly supports concurrent execution in multiple threads
+in a single address space. These threads have their own stack, but share a heap. A few concurrency tools:
+Threads - a task to be executed concurrently with other tasks. Example:
+
+Mutexes are "mututal exclusion objects" meant to control access to shared data. When
+operating on shared data, a thread should acquire the mutex, do its operations, 
+then release the mutex enabling other threads to operate on the shared data.
+A great way to control access to objects without having to manually keep track of a
+ bunch of mutexes in functions is to make the mutex part of the object itself. This way,
+before accessing the object's data, the object's mutex should be acquired.
+When the creator of C++ states "communicating through shared data is pretty low level.", you
+should be very cautious. Concurrency constructs are hard to understand so its best to follow
+best practices and code samples when using these standard library features in your code.

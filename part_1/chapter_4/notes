@@ -34,3 +34,9 @@ map is a search tree data structure. series of name:value pairs implemented as a
 the unordered map is a hashed lookup version of the map. this makes the lookup even faster due to hash tables. a hash table maps keys to values using a hashing function, allowing the search space to be narrowed down very quickly for a search when compared to a binary search. see graph
 
 There are many
+
+----
+
+algorithm - "a finite set of rules which gives a sequence of operations for solving a specific set of problems"
+in C++, these algorithms are codified into function template operations on sequences of elements.
+overall, dont reinvent the wheel. use the standard library, people have already done the work, and theyve most likely done it better than you can.
