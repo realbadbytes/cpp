@@ -16,11 +16,15 @@ mutex mmutex;
 void producer()
 {
     for (int i = 100; i < 105; i++) {
+        // Acquire the lock.
         unique_lock<mutex> lck {mmutex};
         mqueue.push(i);
         cout << "producer - Pushed data to shared queue." << endl;
+        // Unblock waiting threads.
         mcond.notify_one();
         cout << "producer - Notifying consumer and sleeping." << endl;
+        // Scoped unlocking wasn't working properly for me, so I 
+        // explicity unlock before looping.
         lck.unlock();
         this_thread::sleep_for( chrono::milliseconds(1000) );
     }
@@ -29,8 +33,10 @@ void producer()
 void consumer()
 {
     while(true) {
+        // Acquire the lock. Example of RAII.
         unique_lock<mutex> lck {mmutex};
-        //cond_var.wait(lock, []() { return bool_var == true; })
+        // Waiting on condition variable releases the mutex and attempts to 
+        // reacquire once the Predicate returns true.
         mcond.wait(lck, []() { return !mqueue.empty(); });
         auto m = mqueue.front();
         mqueue.pop();
