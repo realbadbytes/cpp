@@ -1,0 +1,20 @@
+Objects can be classified based on their lifetimes:
+
+Automatic: Created when its definition is encountered and destroyed when it goes out of scope. Typically, these are function-local objects located on the stack. Also known as a storage class.
+
+Static: Declared in global or namespace scope. These exist until the program terminates. Also known as a storage class.
+
+Free store: Variable lifetime, depending on the programmer's needs. Pointers can be passed from function to function, or the objects can be manually destroyed when not needed. This type of object is a common source of bugs.
+
+Temporary: Automatic objects that are needed during computation. Lifetime is determined by use.
+
+Thread-local: Created when their thread starts, destroyed when their thread ends. These are declared via thread_local specifier.
+
+Type aliases are useful when we need a new name for a type. There are a few main reasons for this new name:
+1. Original name is too long and would clutter the code
+2. A programming technique requires different types to have the same name in a context (?).
+3. A specific type is mentioned in one place only to simplify maintenance.
+Type specifiers are not allowed with aliases.
+A few examples of type aliases and their typedef equivalents:
+
+
