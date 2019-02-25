@@ -1,0 +1,12 @@
+run-time range checking on array bounds is neither guaranteed nor common. be careful with loops dealing with arrays. you can't dynamically size an array on a function stack. for example if int n is passed to a function, int v[n] is not allowed. you can use the passed-in n though with C++ containers, like vectors. vector<int> v(n); is legal. stroustrup recommends that "arrays should be primarily used inside the implementation of a higher level, bette behaved data structure. If youve allocated an array on the heap, make sure you delete it. Never delete an array that has been allocated on the stack. Its a better programming style to use a resource handle rather than a raw array pointer. This way, when the resource handle goes out of scope, its resources will be freed without you having to remember. Some example array usage:
+A c-string is a null terminated array of char. Its usually assumed that char* or const char* are null terminated. Forgetting to null terminate a char array can lead to undefined behavior. Some possibly unexpected facts about arrays: there is no built-in copy, you cannot initialize one array with another, and there is no array assignment: 
+
+output:
+array_illegal.cpp: In function ‘int main()’:
+array_illegal.cpp:11:17: error: array must be initialized with a brace-enclosed initializer
+     int v6[4] = v5;
+                 ^
+array_illegal.cpp:14:8: error: invalid array assignment
+     v6 = v5;
+
+
