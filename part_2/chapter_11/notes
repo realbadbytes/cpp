@@ -1,0 +1,9 @@
+In their standard forms, C++ allocation and deallocation functions deal with untyped and uninitialized memory. The vast majority of developers should be familiar with malloc and free, however the "new" operator can offer a wider range of functionality; some of which is a bit strange. Objects can be placed anywhere in the free store by providing an allocator function with extra arguments and then supplying these arguments to "new". This is called placement syntax. Stated once more, you can place objects at a known address. This is not possible with malloc as far as I know, and I'm quite surprised that this exists. Trying to use this functionality with a raw address, you'll likely get a compiler note saying that you're initializing __p, which usually is not done.
+
+/usr/include/c++/5/new:129:14: note:   initializing argument 2 of ‘void* operator new(std::size_t, void*)’
+ inline void* operator new(std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+
+A typical use case for this placement new would be constructing an object in memory that is already allocated. Using a pre-allocated buffer alleviates all danger of allocation failure for your object, so that can simplify code perhaps. Here is an example of placing some data into an already existing stack buffer using placement new, then some code abusing placement new to write 0x500 bytes away from the current stack:
+
+
+
